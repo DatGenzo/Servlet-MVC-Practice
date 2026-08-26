@@ -1,0 +1,4 @@
+db.driver=com.mysql.cj.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/servlet_mvc_practice?useUnicode=true&characterEncoding=UTF-8
+db.username=servlet_app
+db.password=YOUR_MYSQL_PASSWORD

@@ -1,0 +1,25 @@
+# Maven build
+target/
+*.war
+
+# Java
+*.class
+
+# VS Code
+.vscode/
+
+# Eclipse/STS
+.project
+.classpath
+.settings/
+.factorypath
+
+# Logs
+*.log
+
+# Local database credentials
+src/main/resources/database.properties
+src/main/resources/application.properties
+
+# Uploaded files
+uploads/
