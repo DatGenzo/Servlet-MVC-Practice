@@ -21,5 +21,8 @@ target/
 src/main/resources/database.properties
 src/main/resources/application.properties
 
+# Local mail credentials
+src/main/resources/mail.properties
+
 # Uploaded files
 uploads/

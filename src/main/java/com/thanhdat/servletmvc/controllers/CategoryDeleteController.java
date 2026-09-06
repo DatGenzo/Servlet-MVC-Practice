@@ -9,8 +9,10 @@ import com.thanhdat.servletmvc.exceptions.ValidationException;
 import com.thanhdat.servletmvc.models.Category;
 import com.thanhdat.servletmvc.services.CategoryService;
 import com.thanhdat.servletmvc.services.FileStorageService;
+import com.thanhdat.servletmvc.services.ProductService;
 import com.thanhdat.servletmvc.services.impl.CategoryServiceImpl;
 import com.thanhdat.servletmvc.services.impl.LocalFileStorageService;
+import com.thanhdat.servletmvc.services.impl.ProductServiceImpl;
 import com.thanhdat.servletmvc.utils.RequestUtils;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -29,12 +31,14 @@ public class CategoryDeleteController
 
     private transient CategoryService categoryService;
     private transient FileStorageService fileStorageService;
+    private transient ProductService productService;
 
     @Override
     public void init() {
         categoryService = new CategoryServiceImpl();
         fileStorageService =
                 new LocalFileStorageService();
+        productService = new ProductServiceImpl();
     }
 
     @Override
@@ -51,6 +55,14 @@ public class CategoryDeleteController
 
             Category category =
                     categoryService.getById(id);
+
+            if (productService.hasProductsInCategory(id)) {
+                response.sendRedirect(
+                        request.getContextPath()
+                                + "/admin/categories?deleteBlocked=products"
+                );
+                return;
+            }
 
             categoryService.delete(id);
 

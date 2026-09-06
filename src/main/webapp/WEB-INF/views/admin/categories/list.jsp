@@ -20,12 +20,17 @@
         <div class="container header-content">
             <h1>Quản lý Category</h1>
 
-            <c:url value="/session/profile"
-                   var="profileUrl"/>
-
-            <a href="${profileUrl}" class="secondary-link">
-                Tài khoản
-            </a>
+            <nav class="header-navigation">
+                <a href="${pageContext.request.contextPath}/home">
+                    Trang chủ
+                </a>
+                <a href="${pageContext.request.contextPath}/admin/products">
+                    Product
+                </a>
+                <a href="${pageContext.request.contextPath}/session/profile">
+                    Tài khoản
+                </a>
+            </nav>
         </div>
     </header>
 
@@ -45,6 +50,12 @@
         <c:if test="${param.deleted == 'success'}">
             <div class="message success">
                 Xóa Category thành công.
+            </div>
+        </c:if>
+
+        <c:if test="${param.deleteBlocked == 'products'}">
+            <div class="message error">
+                Không thể xóa Category đang có Product.
             </div>
         </c:if>
 

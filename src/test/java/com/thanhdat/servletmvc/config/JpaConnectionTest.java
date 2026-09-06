@@ -3,7 +3,6 @@ package com.thanhdat.servletmvc.config;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.AfterClass;
 import org.junit.Test;
 
 import jakarta.persistence.EntityManager;
@@ -27,10 +26,5 @@ public class JpaConnectionTest {
         } finally {
             entityManager.close();
         }
-    }
-
-    @AfterClass
-    public static void closeEntityManagerFactory() {
-        JpaConfig.close();
     }
 }

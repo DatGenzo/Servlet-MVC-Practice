@@ -41,12 +41,26 @@ body {
   color: #ffffff;
 }
 
+.header-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-navigation a {
+  color: #ffffff;
+}
+
 .toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   margin-bottom: 20px;
+}
+
+.toolbar-end {
+  justify-content: flex-end;
 }
 
 .search-form {
@@ -134,12 +148,26 @@ th {
   font-weight: 700;
 }
 
-.form-group input {
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 11px 12px;
   border: 1px solid #d1d5db;
   border-radius: 7px;
+  background: #ffffff;
+  font-family: inherit;
   font-size: 16px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
 
 .form-actions {
@@ -174,6 +202,11 @@ th {
   .search-form {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .table-card {

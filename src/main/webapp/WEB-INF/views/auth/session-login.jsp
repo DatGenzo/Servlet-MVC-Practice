@@ -30,6 +30,18 @@ uri="jakarta.tags.functions" %>
           </div>
         </c:if>
 
+        <c:if test="${param.activated == 'success'}">
+          <div class="message success">
+            Kích hoạt tài khoản thành công. Bạn có thể đăng nhập.
+          </div>
+        </c:if>
+
+        <c:if test="${param.reset == 'success'}">
+          <div class="message success">
+            Đặt lại mật khẩu thành công. Bạn có thể đăng nhập.
+          </div>
+        </c:if>
+
         <c:if test="${not empty alert}">
           <div class="message error">
             <c:out value="${alert}" />
@@ -67,6 +79,24 @@ uri="jakarta.tags.functions" %>
 
           <button type="submit">Đăng nhập</button>
         </form>
+
+        <div class="auth-links">
+          <a href="${pageContext.request.contextPath}/home">
+            Trang chủ
+          </a>
+
+          <a href="${pageContext.request.contextPath}/product">
+            Danh sách sản phẩm
+          </a>
+
+          <a href="${pageContext.request.contextPath}/forgot-password">
+            Quên mật khẩu?
+          </a>
+
+          <a href="${pageContext.request.contextPath}/register">
+            Chưa có tài khoản? Đăng ký
+          </a>
+        </div>
       </section>
     </main>
   </body>

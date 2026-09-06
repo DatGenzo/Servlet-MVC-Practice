@@ -20,6 +20,10 @@
             com.thanhdat.servletmvc.models.Category
         </class>
 
+        <class>
+            com.thanhdat.servletmvc.models.Product
+        </class>
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
@@ -29,7 +33,7 @@
 
             <property
                 name="hibernate.hbm2ddl.auto"
-                value="update"/>
+                value="none"/>
 
             <property
                 name="hibernate.show_sql"

@@ -27,6 +27,10 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
+.auth-card-wide {
+  max-width: 520px;
+}
+
 .auth-card h1 {
   margin-top: 0;
   margin-bottom: 12px;
@@ -73,6 +77,37 @@ button {
 
 button:hover {
   background: #1d4ed8;
+}
+
+.secondary-form {
+  margin-top: 12px;
+}
+
+.secondary-button {
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+  background: #eff6ff;
+}
+
+.secondary-button:hover {
+  background: #dbeafe;
+}
+
+.auth-links {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.auth-links a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
 }
 
 .danger-button {

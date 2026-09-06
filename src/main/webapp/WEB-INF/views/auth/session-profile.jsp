@@ -41,13 +41,27 @@ taglib prefix="c" uri="jakarta.tags.core" %>
           </dd>
         </dl>
 
+        <div class="auth-links">
+          <a href="${pageContext.request.contextPath}/home">
+            Trang chủ
+          </a>
+          <a href="${pageContext.request.contextPath}/product">
+            Danh sách sản phẩm
+          </a>
+        </div>
+
         <c:url value="/session/logout" var="logoutUrl" />
 
         <c:if test="${user.role == 'ADMIN'}">
           <c:url value="/admin/categories" var="categoryAdminUrl" />
+          <c:url value="/admin/products" var="productAdminUrl" />
 
           <p>
             <a href="${categoryAdminUrl}"> Đi đến quản lý Category </a>
+          </p>
+
+          <p>
+            <a href="${productAdminUrl}"> Đi đến quản lý Product </a>
           </p>
         </c:if>
 

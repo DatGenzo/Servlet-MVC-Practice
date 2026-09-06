@@ -1,0 +1,20 @@
+# SMTP server
+mail.smtp.host=smtp.example.com
+mail.smtp.port=587
+
+# SMTP security
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+
+# Network timeout in milliseconds
+mail.smtp.connectiontimeout=10000
+mail.smtp.timeout=10000
+mail.smtp.writetimeout=10000
+
+# SMTP account
+mail.username=your-email@example.com
+mail.password=your-app-password
+
+# Sender information
+mail.from.address=your-email@example.com
+mail.from.name=Servlet MVC Practice
