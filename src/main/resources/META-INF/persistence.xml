@@ -24,6 +24,10 @@
             com.thanhdat.servletmvc.models.Product
         </class>
 
+        <class>
+            com.thanhdat.servletmvc.models.User
+        </class>
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>

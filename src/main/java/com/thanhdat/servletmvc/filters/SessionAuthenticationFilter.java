@@ -18,7 +18,8 @@ import jakarta.servlet.http.HttpSession;
 @WebFilter(
         filterName = "sessionAuthenticationFilter",
         urlPatterns = {
-                "/session/profile"
+                "/session/profile",
+                "/session/profile/*"
         }
 )
 public class SessionAuthenticationFilter implements Filter {

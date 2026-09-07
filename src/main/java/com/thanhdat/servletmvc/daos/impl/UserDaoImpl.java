@@ -23,6 +23,8 @@ public class UserDaoImpl implements UserDao {
                 password_hash,
                 full_name,
                 email,
+                phone,
+                images,
                 role,
                 is_active,
                 created_at,
@@ -39,6 +41,8 @@ public class UserDaoImpl implements UserDao {
                 password_hash,
                 full_name,
                 email,
+                phone,
+                images,
                 role,
                 is_active,
                 created_at,
@@ -282,6 +286,8 @@ public class UserDaoImpl implements UserDao {
         );
         user.setFullName(resultSet.getString("full_name"));
         user.setEmail(resultSet.getString("email"));
+        user.setPhone(resultSet.getString("phone"));
+        user.setImage(resultSet.getString("images"));
         user.setRole(resultSet.getString("role"));
         user.setActive(resultSet.getBoolean("is_active"));
         user.setCreatedAt(

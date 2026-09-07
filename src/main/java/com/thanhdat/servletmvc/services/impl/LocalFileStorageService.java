@@ -29,6 +29,9 @@ public class LocalFileStorageService
     private static final String CATEGORY_DIRECTORY =
             "categories";
 
+    private static final String PROFILE_DIRECTORY =
+            "profiles";
+
     private final Path uploadRoot;
 
     public LocalFileStorageService() {
@@ -38,23 +41,60 @@ public class LocalFileStorageService
 
     @Override
     public String saveCategoryIcon(Part iconPart) {
-        validatePart(iconPart);
+        return saveImage(
+                iconPart,
+                CATEGORY_DIRECTORY,
+                AppConstants.MAX_CATEGORY_ICON_BYTES,
+                "Icon"
+        );
+    }
+
+    @Override
+    public String saveProfileImage(
+            int userId,
+            Part imagePart
+    ) {
+        if (userId <= 0) {
+            throw new ValidationException(
+                    "Phiên đăng nhập không hợp lệ."
+            );
+        }
+
+        return saveImage(
+                imagePart,
+                PROFILE_DIRECTORY + "/" + userId,
+                AppConstants.MAX_PROFILE_IMAGE_BYTES,
+                "Ảnh đại diện"
+        );
+    }
+
+    private String saveImage(
+            Part imagePart,
+            String relativeDirectory,
+            long maximumBytes,
+            String fieldLabel
+    ) {
+        validatePart(
+                imagePart,
+                maximumBytes,
+                fieldLabel
+        );
 
         String extension =
-                detectImageExtension(iconPart);
+                detectImageExtension(imagePart);
 
-        Path categoryDirectory =
-                resolveSecurely(CATEGORY_DIRECTORY);
+        Path imageDirectory =
+                resolveSecurely(relativeDirectory);
 
         try {
-            Files.createDirectories(categoryDirectory);
+            Files.createDirectories(imageDirectory);
 
             String generatedFileName =
                     UUID.randomUUID()
                             + "."
                             + extension;
 
-            Path targetFile = categoryDirectory
+            Path targetFile = imageDirectory
                     .resolve(generatedFileName)
                     .normalize();
 
@@ -62,14 +102,14 @@ public class LocalFileStorageService
 
             Path temporaryFile =
                     Files.createTempFile(
-                            categoryDirectory,
+                            imageDirectory,
                             ".upload-",
                             ".tmp"
                     );
 
             try {
                 copyPartToFile(
-                        iconPart,
+                        imagePart,
                         temporaryFile
                 );
 
@@ -81,12 +121,12 @@ public class LocalFileStorageService
                 Files.deleteIfExists(temporaryFile);
             }
 
-            return CATEGORY_DIRECTORY
+            return relativeDirectory
                     + "/"
                     + generatedFileName;
         } catch (IOException exception) {
             throw new FileStorageException(
-                    "Không thể lưu icon Category.",
+                    "Không thể lưu ảnh tải lên.",
                     exception
             );
         }
@@ -121,31 +161,36 @@ public class LocalFileStorageService
             Files.deleteIfExists(file);
         } catch (IOException exception) {
             throw new FileStorageException(
-                    "Không thể xóa icon Category.",
+                    "Không thể xóa ảnh đã lưu.",
                     exception
             );
         }
     }
 
-    private void validatePart(Part iconPart) {
-        if (iconPart == null || iconPart.getSize() == 0) {
+    private void validatePart(
+            Part imagePart,
+            long maximumBytes,
+            String fieldLabel
+    ) {
+        if (imagePart == null || imagePart.getSize() == 0) {
             throw new ValidationException(
-                    "Vui lòng chọn icon."
+                    "Vui lòng chọn "
+                            + fieldLabel.toLowerCase(Locale.ROOT)
+                            + "."
             );
         }
 
-        if (iconPart.getSize()
-                > AppConstants.MAX_CATEGORY_ICON_BYTES) {
+        if (imagePart.getSize() > maximumBytes) {
             throw new ValidationException(
-                    "Icon không được vượt quá 2 MB."
+                    fieldLabel + " không được vượt quá 2 MB."
             );
         }
     }
 
-    private String detectImageExtension(Part iconPart) {
+    private String detectImageExtension(Part imagePart) {
         try (
                 InputStream inputStream =
-                        iconPart.getInputStream();
+                        imagePart.getInputStream();
 
                 ImageInputStream imageInputStream =
                         ImageIO.createImageInputStream(
@@ -189,19 +234,19 @@ public class LocalFileStorageService
             }
         } catch (IOException exception) {
             throw new FileStorageException(
-                    "Không thể kiểm tra icon tải lên.",
+                    "Không thể kiểm tra ảnh tải lên.",
                     exception
             );
         }
     }
 
     private void copyPartToFile(
-            Part iconPart,
+            Part imagePart,
             Path destination
     ) throws IOException {
 
         try (InputStream inputStream =
-                iconPart.getInputStream()) {
+                imagePart.getInputStream()) {
 
             Files.copy(
                     inputStream,

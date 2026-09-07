@@ -3,18 +3,73 @@ package com.thanhdat.servletmvc.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "users")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private int id;
+
+    @Column(
+            name = "username",
+            nullable = false,
+            unique = true,
+            length = 50
+    )
     private String username;
+
+    @Column(
+            name = "password_hash",
+            nullable = false,
+            length = 255
+    )
     private String passwordHash;
+
+    @Column(
+            name = "full_name",
+            nullable = false,
+            length = 100
+    )
     private String fullName;
+
+    @Column(name = "email", unique = true, length = 100)
     private String email;
+
+    @Column(name = "phone", length = 20)
+    private String phone;
+
+    @Column(name = "images", length = 255)
+    private String image;
+
+    @Column(name = "role", nullable = false, length = 20)
     private String role;
+
+    @Column(name = "is_active", nullable = false)
     private boolean active;
+
+    @Column(
+            name = "created_at",
+            insertable = false,
+            updatable = false
+    )
     private LocalDateTime createdAt;
+
+    @Column(
+            name = "updated_at",
+            insertable = false,
+            updatable = false
+    )
     private LocalDateTime updatedAt;
 
     public User() {
@@ -82,6 +137,22 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String getRole() {
         return role;
     }
@@ -121,6 +192,7 @@ public class User implements Serializable {
                 ", username='" + username + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 ", role='" + role + '\'' +
                 ", active=" + active +
                 '}';

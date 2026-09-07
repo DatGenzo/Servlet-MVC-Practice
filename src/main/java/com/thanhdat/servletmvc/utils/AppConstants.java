@@ -37,6 +37,9 @@ public final class AppConstants {
     public static final long MAX_CATEGORY_ICON_BYTES =
             2L * 1024 * 1024;
 
+    public static final long MAX_PROFILE_IMAGE_BYTES =
+            2L * 1024 * 1024;
+
     public static final long MAX_MULTIPART_REQUEST_BYTES =
             3L * 1024 * 1024;
     private AppConstants() {

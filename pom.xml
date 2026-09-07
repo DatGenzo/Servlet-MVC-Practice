@@ -95,6 +95,13 @@
         <scope>runtime</scope>
     </dependency>
 
+    <!-- SiteMesh 3.3 hỗ trợ Jakarta Servlet 6.1 / Tomcat 11 -->
+    <dependency>
+        <groupId>org.sitemesh</groupId>
+        <artifactId>sitemesh</artifactId>
+        <version>3.3.0-RC1</version>
+    </dependency>
+
     <!-- JUnit 4 dùng cho test -->
     <dependency>
         <groupId>junit</groupId>

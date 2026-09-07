@@ -9,6 +9,23 @@
 
     <display-name>Servlet MVC Practice</display-name>
 
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>
+            org.sitemesh.config.ConfigurableSiteMeshFilter
+        </filter-class>
+        <init-param>
+            <param-name>dispatchMode</param-name>
+            <param-value>include</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/session/profile</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
