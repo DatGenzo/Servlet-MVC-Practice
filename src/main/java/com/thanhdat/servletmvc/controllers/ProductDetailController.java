@@ -48,7 +48,7 @@ public class ProductDetailController extends HttpServlet {
 
             request.getRequestDispatcher(
                     "/WEB-INF/views/products/detail.jsp"
-            ).forward(request, response);
+            ).include(request, response);
         } catch (ValidationException exception) {
             response.sendError(
                     HttpServletResponse.SC_BAD_REQUEST,

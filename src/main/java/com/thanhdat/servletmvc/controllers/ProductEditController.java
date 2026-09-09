@@ -146,7 +146,7 @@ public class ProductEditController extends HttpServlet {
     ) throws ServletException, IOException {
         request.getRequestDispatcher(
                 "/WEB-INF/views/admin/products/form.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 
     private void handleDatabaseError(

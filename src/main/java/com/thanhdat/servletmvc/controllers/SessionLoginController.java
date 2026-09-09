@@ -146,6 +146,6 @@ public class SessionLoginController extends HttpServlet {
 
         request.getRequestDispatcher(
                 "/WEB-INF/views/auth/session-login.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

@@ -40,7 +40,7 @@ public class ProductAdminListController extends HttpServlet {
 
             request.getRequestDispatcher(
                     "/WEB-INF/views/admin/products/list.jsp"
-            ).forward(request, response);
+            ).include(request, response);
         } catch (DataAccessException exception) {
             getServletContext().log(
                     "Không thể tải danh sách Product quản trị.",

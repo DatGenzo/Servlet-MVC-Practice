@@ -141,6 +141,6 @@ public class RegisterController extends HttpServlet {
     ) throws ServletException, IOException {
         request.getRequestDispatcher(
                 "/WEB-INF/views/auth/register.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

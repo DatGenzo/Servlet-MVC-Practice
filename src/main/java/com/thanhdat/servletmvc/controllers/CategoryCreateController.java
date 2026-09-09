@@ -186,6 +186,6 @@ public class CategoryCreateController
 
         request.getRequestDispatcher(
                 "/WEB-INF/views/admin/categories/form.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

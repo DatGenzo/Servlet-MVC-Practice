@@ -43,7 +43,7 @@ public class HomeController extends HttpServlet {
 
             request.getRequestDispatcher(
                     "/WEB-INF/views/home.jsp"
-            ).forward(request, response);
+            ).include(request, response);
         } catch (DataAccessException exception) {
             getServletContext().log(
                     "Không thể tải Product mới nhất.",

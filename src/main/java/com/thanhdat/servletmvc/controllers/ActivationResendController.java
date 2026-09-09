@@ -110,6 +110,6 @@ public class ActivationResendController
 
         request.getRequestDispatcher(
                 "/WEB-INF/views/auth/activate-account.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

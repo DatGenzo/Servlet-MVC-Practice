@@ -108,6 +108,6 @@ public class PasswordResetResendController
 
         request.getRequestDispatcher(
                 "/WEB-INF/views/auth/verify-reset-otp.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

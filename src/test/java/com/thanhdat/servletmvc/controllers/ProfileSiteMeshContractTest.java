@@ -96,10 +96,13 @@ public class ProfileSiteMeshContractTest {
         assertTrue(webXml.contains("ConfigurableSiteMeshFilter"));
         assertTrue(webXml.contains("<param-value>include</param-value>"));
         assertTrue(webXml.contains(
-                "<url-pattern>/session/profile</url-pattern>"
+                "<url-pattern>/*</url-pattern>"
         ));
         assertFalse(webXml.contains("<dispatcher>FORWARD</dispatcher>"));
-        assertTrue(siteMesh.contains("path=\"/session/profile\""));
+        assertTrue(siteMesh.contains("path=\"/*\""));
+        assertTrue(siteMesh.contains(
+                "path=\"/session/profile/image\" exclude=\"true\""
+        ));
         assertTrue(siteMesh.contains("bootstrap.jsp"));
         assertTrue(decorator.contains("bootstrap@5.3.3"));
         assertTrue(decorator.contains(

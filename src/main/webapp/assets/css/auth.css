@@ -64,7 +64,7 @@ body {
   outline: 2px solid rgba(37, 99, 235, 0.15);
 }
 
-button {
+.auth-card button {
   width: 100%;
   padding: 11px 16px;
   border: 0;
@@ -75,7 +75,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.auth-card button:hover {
   background: #1d4ed8;
 }
 

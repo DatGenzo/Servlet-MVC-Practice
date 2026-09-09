@@ -22,7 +22,7 @@
 
     <filter-mapping>
         <filter-name>sitemesh</filter-name>
-        <url-pattern>/session/profile</url-pattern>
+        <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 

@@ -60,7 +60,7 @@ public class ProductListController extends HttpServlet {
 
             request.getRequestDispatcher(
                     "/WEB-INF/views/products/list.jsp"
-            ).forward(request, response);
+            ).include(request, response);
         } catch (DataAccessException exception) {
             getServletContext().log(
                     "Không thể tải trang Product.",

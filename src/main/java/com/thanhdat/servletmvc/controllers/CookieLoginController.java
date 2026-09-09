@@ -139,6 +139,6 @@ public class CookieLoginController extends HttpServlet {
 
         request.getRequestDispatcher(
                 "/WEB-INF/views/auth/cookie-login.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

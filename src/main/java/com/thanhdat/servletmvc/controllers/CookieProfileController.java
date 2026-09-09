@@ -47,6 +47,6 @@ public class CookieProfileController extends HttpServlet {
 
         request.getRequestDispatcher(
                 "/WEB-INF/views/auth/cookie-profile.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

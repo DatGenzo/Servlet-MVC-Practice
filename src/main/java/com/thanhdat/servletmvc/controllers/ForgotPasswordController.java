@@ -109,6 +109,6 @@ public class ForgotPasswordController extends HttpServlet {
     ) throws ServletException, IOException {
         request.getRequestDispatcher(
                 "/WEB-INF/views/auth/forgot-password.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

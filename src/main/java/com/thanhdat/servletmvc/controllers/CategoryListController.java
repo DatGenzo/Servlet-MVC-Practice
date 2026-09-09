@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.thanhdat.servletmvc.exceptions.DataAccessException;
+import com.thanhdat.servletmvc.exceptions.ValidationException;
 import com.thanhdat.servletmvc.models.Category;
 import com.thanhdat.servletmvc.services.CategoryService;
 import com.thanhdat.servletmvc.services.impl.CategoryServiceImpl;
@@ -53,7 +54,18 @@ public class CategoryListController extends HttpServlet {
 
             request.getRequestDispatcher(
                     "/WEB-INF/views/admin/categories/list.jsp"
-            ).forward(request, response);
+            ).include(request, response);
+        } catch (ValidationException exception) {
+            request.setAttribute("categories", List.of());
+            request.setAttribute(
+                    "keyword",
+                    keyword == null ? "" : keyword
+            );
+            request.setAttribute("alert", exception.getMessage());
+
+            request.getRequestDispatcher(
+                    "/WEB-INF/views/admin/categories/list.jsp"
+            ).include(request, response);
         } catch (DataAccessException exception) {
             getServletContext().log(
                     "Không thể tải danh sách Category.",

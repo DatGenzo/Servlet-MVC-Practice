@@ -182,6 +182,6 @@ public class ResetPasswordController extends HttpServlet {
     ) throws ServletException, IOException {
         request.getRequestDispatcher(
                 "/WEB-INF/views/auth/reset-password.jsp"
-        ).forward(request, response);
+        ).include(request, response);
     }
 }

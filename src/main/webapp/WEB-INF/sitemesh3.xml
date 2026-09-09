@@ -2,6 +2,11 @@
 
 <sitemesh>
     <mapping
-        path="/session/profile"
+        path="/*"
         decorator="bootstrap.jsp"/>
+
+    <mapping path="/assets/*" exclude="true"/>
+    <mapping path="/admin/category-icons" exclude="true"/>
+    <mapping path="/session/profile/image" exclude="true"/>
+    <mapping path="/health/*" exclude="true"/>
 </sitemesh>
