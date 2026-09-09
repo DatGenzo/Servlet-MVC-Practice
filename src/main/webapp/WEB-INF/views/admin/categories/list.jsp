@@ -59,6 +59,12 @@
             </div>
         </c:if>
 
+        <c:if test="${not empty alert}">
+            <div class="message error">
+                <c:out value="${alert}"/>
+            </div>
+        </c:if>
+
         <section class="toolbar">
             <c:url value="/admin/categories"
                    var="listUrl"/>
@@ -71,6 +77,7 @@
                     type="search"
                     name="keyword"
                     value="${fn:escapeXml(keyword)}"
+                    maxlength="100"
                     placeholder="Tìm theo tên Category">
 
                 <button type="submit">

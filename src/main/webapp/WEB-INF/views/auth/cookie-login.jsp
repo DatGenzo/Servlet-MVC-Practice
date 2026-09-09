@@ -46,7 +46,9 @@ uri="jakarta.tags.functions" %>
               type="text"
               value="${fn:escapeXml(username)}"
               autocomplete="username"
+              minlength="3"
               maxlength="50"
+              pattern="[A-Za-z0-9._-]{3,50}"
               required
             />
           </div>
@@ -59,6 +61,7 @@ uri="jakarta.tags.functions" %>
               name="password"
               type="password"
               autocomplete="current-password"
+              maxlength="72"
               required
             />
           </div>

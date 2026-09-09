@@ -40,6 +40,8 @@
               value="${fn:escapeXml(username)}"
               minlength="3"
               maxlength="50"
+              pattern="[A-Za-z0-9._-]{3,50}"
+              title="Chỉ dùng chữ, số, dấu chấm, gạch dưới hoặc gạch ngang"
               autocomplete="username"
               required
             />

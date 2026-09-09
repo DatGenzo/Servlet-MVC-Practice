@@ -69,11 +69,18 @@ public class UserServiceImpl implements UserService {
         if (username == null
                 || username.isBlank()
                 || rawPassword == null
-                || rawPassword.length == 0) {
+                || rawPassword.length == 0
+                || rawPassword.length > MAX_PASSWORD_LENGTH) {
             return Optional.empty();
         }
 
         String normalizedUsername = username.trim();
+
+        if (!USERNAME_PATTERN.matcher(
+                normalizedUsername
+        ).matches()) {
+            return Optional.empty();
+        }
 
         Optional<User> userOptional =
                 userDao.findByUsername(normalizedUsername);

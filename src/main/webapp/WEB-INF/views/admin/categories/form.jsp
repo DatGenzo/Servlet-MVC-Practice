@@ -55,6 +55,7 @@
                         name="name"
                         type="text"
                         value="${fn:escapeXml(category.name)}"
+                        minlength="1"
                         maxlength="100"
                         required>
                 </div>

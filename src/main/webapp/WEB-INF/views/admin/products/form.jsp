@@ -93,6 +93,7 @@
                                type="number"
                                value="${product.quantity}"
                                min="0"
+                               max="2147483647"
                                step="1"
                                required>
                     </div>

@@ -37,8 +37,18 @@ public class CategoryServiceImpl
             return categoryDao.findAll();
         }
 
+        String normalizedKeyword = keyword.trim();
+
+        if (normalizedKeyword.length() > MAX_NAME_LENGTH) {
+            throw new ValidationException(
+                    "Từ khóa tìm kiếm không được vượt quá "
+                            + MAX_NAME_LENGTH
+                            + " ký tự."
+            );
+        }
+
         return categoryDao.searchByName(
-                keyword.trim()
+                normalizedKeyword
         );
     }
 
